@@ -123,9 +123,9 @@ class Banner(BaseModel):
 
 
 class OrderHistory(BaseModel):
-    '''
+    """
     订单记录
-    '''
+    """
     WAY = (
         (1, '微信'),
         (2, '支付宝'),
@@ -153,3 +153,18 @@ class OrderHistory(BaseModel):
     payment_status = models.IntegerField(choices=STATUS, verbose_name='付款状态')
     time_of_payment = models.DateTimeField(verbose_name='付款时间')
     shipping_status = models.IntegerField(choices=TYPE, verbose_name='发货状态')
+
+
+class WareHouse(BaseModel):
+    """
+    仓库, 用来记录商品销售，退货···
+    """
+    REASON = (
+        (1, '销售'),
+        (2, '退货'),
+    )
+    name = models.CharField(verbose_name="仓库名", max_length=25)
+    good_sn = models.CharField(verbose_name="商品的编号", max_length=50)
+    increment = models.BooleanField(verbose_name="增量", default=True)  # 0出库 1入库
+    quantity = models.IntegerField(verbose_name="入/出数量")
+    reason = models.IntegerField(choices=REASON, verbose_name="存量变化来源")
