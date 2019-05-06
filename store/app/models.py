@@ -157,7 +157,7 @@ class OrderHistory(BaseModel):
 
 class WareHouse(BaseModel):
     """
-    仓库, 用来记录商品销售，退货···
+    仓库, 用来记录商品销售，退货
     """
     REASON = (
         (1, '销售'),
